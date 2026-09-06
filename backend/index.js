@@ -16,8 +16,11 @@ import teacherAttendanceRoutes from "./routes/teacherAttendanceRoutes.js"
 // Load the .env file FIRST, so every line below can read process.env
 dotenv.config()
 
-// Use Google's DNS (helps when the network cannot resolve MongoDB Atlas)
-dns.setServers(["8.8.8.8", "8.8.4.4"])
+// Use Google's DNS locally (helps when the home network cannot resolve
+// MongoDB Atlas). In production the host handles DNS itself.
+if (!process.env.VERCEL) {
+    dns.setServers(["8.8.8.8", "8.8.4.4"])
+}
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -34,15 +37,24 @@ app.get("/", (req, res) => {
     res.status(200).send({ message: "attendance app is running" })
 })
 
-app.use("/api/auth", authRoutes)
-app.use("/api/students", studentRoutes)
-app.use("/api/enrollments", enrollmentRoutes)
-app.use("/api/courses", courseRoutes)
-app.use("/api/teaching", teachingRoutes)
-app.use("/api/attendance", attendanceRoutes)
-app.use("/api/correction-requests", correctionRequestRoutes)
-app.use("/api/teacher-attendance", teacherAttendanceRoutes)
+const api = express.Router()
+
+api.use("/auth", authRoutes)
+api.use("/students", studentRoutes)
+api.use("/enrollments", enrollmentRoutes)
+api.use("/courses", courseRoutes)
+api.use("/teaching", teachingRoutes)
+api.use("/attendance", attendanceRoutes)
+api.use("/correction-requests", correctionRequestRoutes)
+api.use("/teacher-attendance", teacherAttendanceRoutes)
+
+// Mounted twice on purpose: some hosts forward the full path ("/api/auth/login")
+// while others strip the prefix first ("/auth/login"). This handles both.
+app.use("/api", api)
+app.use("/", api)
 
 app.listen(PORT, () => {
     console.log(`server running on port ${PORT}`)
 })
+
+export default app

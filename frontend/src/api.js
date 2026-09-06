@@ -1,7 +1,9 @@
 import axios from "axios"
 
+// In development this is the local server.
+// In production Vite replaces VITE_API_URL at build time.
 const api = axios.create({
-  baseURL: "http://localhost:4444/api"
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:4444/api"
 })
 
 // Attach the login token to every request automatically
