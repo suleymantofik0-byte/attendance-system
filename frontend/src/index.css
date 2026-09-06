@@ -1,0 +1,341 @@
+/* ---------- basic reset ---------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f4f7;
+  color: #222;
+  font-size: 14px;
+}
+
+/* ---------- login page ---------- */
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 30px;
+  width: 340px;
+}
+
+.login-box h1 {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.switch {
+  margin-top: 15px;
+  text-align: center;
+  color: #666;
+}
+
+.switch span {
+  color: #2c6cb0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ---------- header bar ---------- */
+
+.header {
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 14px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h2 {
+  font-size: 18px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.role-tag {
+  background-color: #4a5f74;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* ---------- page content ---------- */
+
+.content {
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.empty {
+  color: #999;
+  font-style: italic;
+}
+
+/* ---------- tabs ---------- */
+
+.tabs {
+  margin-bottom: 20px;
+}
+
+.tab {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 8px 14px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.tab:hover {
+  background-color: #eef2f6;
+}
+
+.tab.active {
+  background-color: #2c3e50;
+  color: #fff;
+  border-color: #2c3e50;
+}
+
+/* ---------- forms ---------- */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.field {
+  margin-bottom: 12px;
+  flex: 1;
+  min-width: 160px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 4px;
+  color: #555;
+  font-size: 13px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: #fff;
+}
+
+textarea {
+  height: 70px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2c6cb0;
+}
+
+/* ---------- buttons ---------- */
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-main {
+  background-color: #2c6cb0;
+  color: #fff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.btn-main:hover {
+  background-color: #24578d;
+}
+
+.btn-small {
+  background-color: #2c6cb0;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.btn-danger {
+  background-color: #c0392b;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.btn-cancel {
+  background-color: #ddd;
+  color: #333;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+.btn-logout {
+  background-color: #c0392b;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* ---------- tables ---------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th {
+  background-color: #f7f8fa;
+  text-align: left;
+  padding: 10px;
+  border-bottom: 2px solid #e3e6ea;
+  font-size: 13px;
+  color: #555;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+tr:hover td {
+  background-color: #fafbfc;
+}
+
+/* ---------- coloured labels ---------- */
+
+.status,
+.role {
+  padding: 3px 9px;
+  border-radius: 3px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.status.present,
+.status.approved {
+  background-color: #d5f0dc;
+  color: #1e7a3c;
+}
+
+.status.absent,
+.status.rejected {
+  background-color: #fadbd8;
+  color: #a5281b;
+}
+
+.status.late,
+.status.pending {
+  background-color: #fcf0d0;
+  color: #92700f;
+}
+
+.role.admin {
+  background-color: #e3d9f5;
+  color: #5b3a9e;
+}
+
+.role.teacher {
+  background-color: #d6e6f7;
+  color: #24578d;
+}
+
+.role.student {
+  background-color: #e6e8ea;
+  color: #4a5560;
+}
+
+/* ---------- messages ---------- */
+
+.error {
+  background-color: #fadbd8;
+  color: #a5281b;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  border: 1px solid #f0b8b2;
+}
+
+.success {
+  background-color: #d5f0dc;
+  color: #1e7a3c;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  border: 1px solid #a8dcb8;
+}
+
+
+.note {
+  background-color: #f7f8fa;
+  border-left: 3px solid #2c6cb0;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 12px;
+}
