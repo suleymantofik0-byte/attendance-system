@@ -1,7 +1,9 @@
 import axios from "axios"
 
+// In production, /api is proxied to the backend by vercel.json, so the browser
+// sees one domain and the auth cookies are first-party (Safari blocks them otherwise).
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:4444/api",
+  baseURL: import.meta.env.DEV ? "http://localhost:4444/api" : "/api",
   withCredentials: true
 })
 
