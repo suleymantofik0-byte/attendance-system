@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import api, { saveToken, getUser } from '../api.js'
+import api from '../api'
+import { useAuth } from '../context/AuthContext'
+
 
 function Login() {
   const navigate = useNavigate()
@@ -14,18 +16,17 @@ function Login() {
 
   const [error, setError] = useState('')
   const [message, setMessage] = useState('')
+  const {login} = useAuth()
 
-  // Sends the email + password to the backend.
-  // If correct we get a token back, save it, then go to the right dashboard.
+  
   async function handleLogin(event) {
     event.preventDefault()
     setError('')
 
     try {
-      const data = await api.post('/auth/login', { email, password })
-      saveToken(data.data.token)
+      const user= await login(email, password)
 
-      const user = getUser()
+     
       navigate('/' + user.role)
 
     } catch (err) {
