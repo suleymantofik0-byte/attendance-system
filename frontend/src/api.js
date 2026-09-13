@@ -23,7 +23,11 @@ api.interceptors.response.use(
         await api.post("/auth/refresh")
         return api(original)
       } catch {
-        window.location.href = "/"
+        // On the login page a failed refresh just means "not logged in".
+        // Redirecting there would reload, re-check, fail again and loop forever.
+        if (window.location.pathname !== "/") {
+          window.location.href = "/"
+        }
         return Promise.reject(error)
       }
     }
